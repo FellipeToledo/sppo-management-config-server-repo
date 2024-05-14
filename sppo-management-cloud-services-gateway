@@ -1,0 +1,27 @@
+server:
+  port: 8090
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: bus-datasource-service
+            uri: http://localhost:8081/
+            Predicates:
+              - Path=/api/v1/rioonibus-datasource/bus/**
+              
+          - id: consortium-datasource-service
+            uri: http://localhost:8082/
+            Predicates:
+              - Path=/api/v1/rioonibus-datasource/consortium/**
+
+          - id: garage-datasource-service
+            uri: http://localhost:8083/
+            Predicates:
+              - Path=/api/v1/rioonibus-datasource/garage/**
+
+          - id: company-datasource-service
+            uri: http://localhost:8084/
+            Predicates:
+              - Path=/api/v1/rioonibus-datasource/company/**
